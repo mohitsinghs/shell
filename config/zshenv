@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+# for moving quickly
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias -- -="cd -"
+alias ~="cd ~"
+
+# download with aria2 using 16 connections
+alias a2c="aria2c -x16 -s16"
+
+# make nested directories
+alias mkdir="mkdir -p"
+
+# common shortcuts
+alias g="git"
+alias vi="vi"
+alias vim="nvim"
+
+# better ls output using exa
+alias la="exa -la --group-directories-first"
+alias ll="exa -l --group-directories-first"
+alias ls="exa"
+
+# sudoed aliases, shell reloading and pretty paths
+alias sudo="sudo "
+alias reload="exec $SHELL -l"
+alias path="echo -e ${PATH//:/\\\n}"
+

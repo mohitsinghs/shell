@@ -1,0 +1,14 @@
+autoload -Uz compinit
+compinit
+autoload -Uz promptinit
+promptinit
+
+eval "$(starship init zsh)"
+
+# enable zsh syntax highlighting and autosuggestions
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+export TERM=xterm-256color
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
