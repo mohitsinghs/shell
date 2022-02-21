@@ -62,20 +62,23 @@ RUN curl -sL $(curl -sl "https://api.github.com/repos/starship/starship/releases
   install starship /usr/local/bin/starship && \
   rm starship starship.tgz
 
-RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+RUN chsh -s /usr/bin/zsh root && \
+  localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
+WORKDIR /root
+
 ENV LANG en_US.utf8
 ENV APPIMAGE_EXTRACT_AND_RUN=1
 
 RUN mkdir -p /root/.config/nvim
-COPY config/init.vim /root/.config/nvim/init.vim
+COPY config/init.vim .config/nvim/init.vim
 RUN nvim +PlugUpdate +qa
 
-COPY config/zshrc /root/.zshrc
-COPY config/zshenv /root/.zshenv
-COPY config/tmux.conf  /root/.tmux.conf
-COPY config/gitconfig /root/.gitconfig
+COPY config/zshrc .zshrc
+COPY config/zshenv .zshenv
+COPY config/tmux.conf  .tmux.conf
+COPY config/gitconfig .gitconfig
 COPY config/starship.toml /root/.config/starship.toml
 
-WORKDIR /root
 CMD [ "/usr/bin/zsh" ]
 
